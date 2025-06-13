@@ -5,10 +5,25 @@
 package Semana8;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class Tablero extends javax.swing.JFrame {
 
+    private ControladorJuego controlador;
+
+    public Tablero() {
+        initComponents();
+        
+        JButton[][] matrizBotones = {
+            {casilla1, casilla2, casilla3},
+            {casilla4, casilla5, casilla6},
+            {casilla7, casilla8, casilla9}
+        };
+        
+        controlador = new ControladorJuego(matrizBotones);
+    }
+    
     public class ControladorJuego {
     private char[][] tablero = new char[3][3];
     private JButton[][] botones;
@@ -37,6 +52,7 @@ public class Tablero extends javax.swing.JFrame {
         turno = (turno == 'X') ? '0' : 'X';
     }
 }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,20 +93,60 @@ public class Tablero extends javax.swing.JFrame {
         });
 
         casilla2.setBackground(new java.awt.Color(255, 153, 153));
+        casilla2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                casilla2ActionPerformed(evt);
+            }
+        });
 
         casilla3.setBackground(new java.awt.Color(255, 153, 153));
+        casilla3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                casilla3ActionPerformed(evt);
+            }
+        });
 
         casilla4.setBackground(new java.awt.Color(255, 153, 153));
+        casilla4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                casilla4ActionPerformed(evt);
+            }
+        });
 
         casilla5.setBackground(new java.awt.Color(255, 153, 153));
+        casilla5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                casilla5ActionPerformed(evt);
+            }
+        });
 
         casilla6.setBackground(new java.awt.Color(255, 153, 153));
+        casilla6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                casilla6ActionPerformed(evt);
+            }
+        });
 
         casilla7.setBackground(new java.awt.Color(255, 153, 153));
+        casilla7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                casilla7ActionPerformed(evt);
+            }
+        });
 
         casilla8.setBackground(new java.awt.Color(255, 153, 153));
+        casilla8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                casilla8ActionPerformed(evt);
+            }
+        });
 
         casilla9.setBackground(new java.awt.Color(255, 153, 153));
+        casilla9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                casilla9ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -182,8 +238,40 @@ public class Tablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void casilla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla1ActionPerformed
-        // TODO add your handling code here:
+        controlador.realizarMovimiento(0, 0);
     }//GEN-LAST:event_casilla1ActionPerformed
+
+    private void casilla2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla2ActionPerformed
+        controlador.realizarMovimiento(0, 1);
+    }//GEN-LAST:event_casilla2ActionPerformed
+
+    private void casilla3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla3ActionPerformed
+        controlador.realizarMovimiento(0, 2);
+    }//GEN-LAST:event_casilla3ActionPerformed
+
+    private void casilla4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla4ActionPerformed
+        controlador.realizarMovimiento(1, 0);
+    }//GEN-LAST:event_casilla4ActionPerformed
+
+    private void casilla5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla5ActionPerformed
+        controlador.realizarMovimiento(1, 1);
+    }//GEN-LAST:event_casilla5ActionPerformed
+
+    private void casilla6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla6ActionPerformed
+        controlador.realizarMovimiento(1, 2);
+    }//GEN-LAST:event_casilla6ActionPerformed
+
+    private void casilla7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla7ActionPerformed
+        controlador.realizarMovimiento(2, 0);
+    }//GEN-LAST:event_casilla7ActionPerformed
+
+    private void casilla8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla8ActionPerformed
+        controlador.realizarMovimiento(2, 1);
+    }//GEN-LAST:event_casilla8ActionPerformed
+
+    private void casilla9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla9ActionPerformed
+        controlador.realizarMovimiento(2, 2);
+    }//GEN-LAST:event_casilla9ActionPerformed
 
     /**
      * @param args the command line arguments
