@@ -10,7 +10,7 @@ package Semana8;
  */
 public class GestionJugador {
     private Jugador jugadorActual;
-    private Jugador jugador2;
+    private Jugador jugador2 = null;
     private Jugador jugadores[] = new Jugador[5];
     private static GestionJugador intanciado;
     
