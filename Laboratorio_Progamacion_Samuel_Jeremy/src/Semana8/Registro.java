@@ -36,9 +36,12 @@ public class Registro extends javax.swing.JFrame {
         salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(640, 475));
+        setMinimumSize(new java.awt.Dimension(640, 475));
         setPreferredSize(new java.awt.Dimension(640, 475));
 
         panel1.setBackground(new java.awt.Color(255, 204, 204));
+        panel1.setPreferredSize(new java.awt.Dimension(640, 475));
 
         titulo.setAlignment(java.awt.Label.CENTER);
         titulo.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 36)); // NOI18N
@@ -77,10 +80,6 @@ public class Registro extends javax.swing.JFrame {
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
-                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(117, 117, 117))
             .addGroup(panel1Layout.createSequentialGroup()
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
@@ -92,8 +91,11 @@ public class Registro extends javax.swing.JFrame {
                         .addGap(266, 266, 266)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(registrar))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(registrar)))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,20 +140,25 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nom = nombreUsuario.getText();
         String contra = passWord.getText();
-      
-        
-   
-        if(gestion.agregarJugador(nom, contra)){
-            gestion.agregarJugador(nom, contra);
-            JOptionPane.showMessageDialog(null, "Usuario Registrado con exito!!!!");
-        }else{
-            JOptionPane.showMessageDialog(null, "Error! Usuario ya existe!!!!");
-        
-        }      
+            
+        if (contra.length() >= 5) {
+            if (gestion.agregarJugador(nom, contra)) {
+                gestion.agregarJugador(nom, contra);
+                JOptionPane.showMessageDialog(null, "Usuario Registrado con exito!!!!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error! Usuario no valido!!!!");
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Porfavor, La contraseña debe tener almenos 5 caracteres!!!!");
+        }
     }//GEN-LAST:event_registrarActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         // TODO add your handling code here:
+        MenuInicio in = new MenuInicio();
+        in.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_salirActionPerformed
 
     /**

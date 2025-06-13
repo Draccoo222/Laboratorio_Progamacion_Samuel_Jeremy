@@ -60,6 +60,11 @@ public class GestionJugador {
         }
        return false;
     }
+    
+    public boolean verificarCantidad(){
+        return jugadores[0] != null && jugadores[1] != null;   
+    }
+        
 
     
 }

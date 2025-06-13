@@ -11,11 +11,12 @@ package Semana8;
 public class Jugador {
     private String playerN;
     private String passW;
-    private String puntos;
+    private int puntos;
 
     public Jugador(String playerN, String passW) {
         this.playerN = playerN;
         this.passW = passW;
+        puntos = 0;
     }
     
     public boolean verificarPassWord(String passW){
