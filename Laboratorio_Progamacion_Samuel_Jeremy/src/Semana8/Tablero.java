@@ -43,16 +43,69 @@ public class Tablero extends javax.swing.JFrame {
     }
     
     public void realizarMovimiento(int fila, int columna) {
-        if (tablero[fila][columna] != '-') {
-            JOptionPane.showMessageDialog(null, "Celda ocupada, elige otra.");
-            return;
-        }
-        tablero[fila][columna] = turno;
-        botones[fila][columna].setText(String.valueOf(turno));
-        turno = (turno == 'X') ? '0' : 'X';
-    }
-}
+        if (fila < 0 || fila >= 3 || columna < 0 || columna >= 3) {
+                JOptionPane.showMessageDialog(null, "Coordenada incorrecta, escoge otra :c");
+                return;
+            }
+            if (tablero[fila][columna] != '-') {
+                JOptionPane.showMessageDialog(null, "Casilla ya escogida, escoge otro >:D");
+                return;
+            }
+            tablero[fila][columna] = turno;
+            botones[fila][columna].setText(String.valueOf(turno));
 
+            if (verificarGanador(turno)) {
+                JOptionPane.showMessageDialog(null, "EL JUGADOR " + turno + " HA GANADO!!!");
+                terminarJuego();
+                return;
+            }
+            if (juegoEmpatado()) {
+                JOptionPane.showMessageDialog(null, "Empate.");
+                terminarJuego();
+                return;
+            }
+            
+            turno = (turno == 'X') ? '0' : 'X';
+}
+    
+    private boolean verificarGanador(char ficha) {
+            for (int i = 0; i < 3; i++) {
+                if (tablero[i][0] == ficha && tablero[i][1] == ficha && tablero[i][2] == ficha)
+                    return true;
+            }
+            for (int j = 0; j < 3; j++) {
+                if (tablero[0][j] == ficha && tablero[1][j] == ficha && tablero[2][j] == ficha)
+                    return true;
+            }
+            if (tablero[0][0] == ficha && tablero[1][1] == ficha && tablero[2][2] == ficha)
+                return true;
+            if (tablero[0][2] == ficha && tablero[1][1] == ficha && tablero[2][0] == ficha)
+                return true;
+            return false;
+        }
+    
+    private boolean juegoEmpatado() {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (tablero[i][j] == '-') {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+    
+    private void terminarJuego() {
+            for (int i = 0; i < botones.length; i++) {
+                for (int j = 0; j < botones[i].length; j++) {
+                    botones[i][j].setEnabled(false);
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Juego terminado! Regresaras al menu principal.");
+            new MenuPrincipal().setVisible(true);
+            Tablero.this.dispose();
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,6 +139,7 @@ public class Tablero extends javax.swing.JFrame {
         titulo.setText("JUEGO X - 0");
 
         casilla1.setBackground(new java.awt.Color(255, 153, 153));
+        casilla1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         casilla1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla1ActionPerformed(evt);
@@ -93,6 +147,7 @@ public class Tablero extends javax.swing.JFrame {
         });
 
         casilla2.setBackground(new java.awt.Color(255, 153, 153));
+        casilla2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         casilla2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla2ActionPerformed(evt);
@@ -100,6 +155,7 @@ public class Tablero extends javax.swing.JFrame {
         });
 
         casilla3.setBackground(new java.awt.Color(255, 153, 153));
+        casilla3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         casilla3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla3ActionPerformed(evt);
@@ -107,6 +163,7 @@ public class Tablero extends javax.swing.JFrame {
         });
 
         casilla4.setBackground(new java.awt.Color(255, 153, 153));
+        casilla4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         casilla4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla4ActionPerformed(evt);
@@ -114,6 +171,7 @@ public class Tablero extends javax.swing.JFrame {
         });
 
         casilla5.setBackground(new java.awt.Color(255, 153, 153));
+        casilla5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         casilla5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla5ActionPerformed(evt);
@@ -121,6 +179,7 @@ public class Tablero extends javax.swing.JFrame {
         });
 
         casilla6.setBackground(new java.awt.Color(255, 153, 153));
+        casilla6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         casilla6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla6ActionPerformed(evt);
@@ -128,6 +187,7 @@ public class Tablero extends javax.swing.JFrame {
         });
 
         casilla7.setBackground(new java.awt.Color(255, 153, 153));
+        casilla7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         casilla7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla7ActionPerformed(evt);
@@ -135,6 +195,7 @@ public class Tablero extends javax.swing.JFrame {
         });
 
         casilla8.setBackground(new java.awt.Color(255, 153, 153));
+        casilla8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         casilla8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla8ActionPerformed(evt);
@@ -142,6 +203,7 @@ public class Tablero extends javax.swing.JFrame {
         });
 
         casilla9.setBackground(new java.awt.Color(255, 153, 153));
+        casilla9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         casilla9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 casilla9ActionPerformed(evt);
