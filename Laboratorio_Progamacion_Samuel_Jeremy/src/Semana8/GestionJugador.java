@@ -29,6 +29,12 @@ public class GestionJugador {
         return null;
     }
 
+    public Jugador getJugador2() {
+        return jugador2;
+    }
+    
+    
+
     public Jugador getJugadorActual() {
         return jugadorActual;
     }
@@ -60,6 +66,16 @@ public class GestionJugador {
         }
        return false;
     }
+    
+    public boolean agregarJugador2(String nomJ){
+        Jugador j = buscarJugador(nomJ);
+        if (j != null) {
+                jugador2 = j;
+                return true;
+            }
+       return false;
+    }
+    
     
     public boolean verificarCantidad(){
         return jugadores[0] != null && jugadores[1] != null;   
