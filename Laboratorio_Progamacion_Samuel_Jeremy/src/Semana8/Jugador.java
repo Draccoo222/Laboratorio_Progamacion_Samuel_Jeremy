@@ -17,6 +17,10 @@ public class Jugador {
         this.playerN = playerN;
         this.passW = passW;
     }
+    
+    public boolean verificarPassWord(String passW){
+        return this.passW.equals(passW);
+    }
 
     public String getPlayerN() {
         return playerN;

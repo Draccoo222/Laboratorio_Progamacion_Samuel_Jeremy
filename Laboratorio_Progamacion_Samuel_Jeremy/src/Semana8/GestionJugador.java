@@ -10,9 +10,9 @@ package Semana8;
  */
 public class GestionJugador {
     private Jugador jugadorActual;
+    private Jugador jugador2;
     private Jugador jugadores[] = new Jugador[5];
     private static GestionJugador intanciado;
-    
     
     public static GestionJugador getInstance(){
         if(intanciado == null){
@@ -37,24 +37,29 @@ public class GestionJugador {
         this.jugadorActual = null;
     }
     
-    public boolean agregarJugador(String nomJ, String passW){
-        if(buscarJugador(nomJ) == null ){
-            for(Jugador j: jugadores){
-                if(j == null){
-                    j = new Jugador(nomJ, passW);
+    public boolean agregarJugador(String nomJ, String passW) {
+        if (buscarJugador(nomJ) == null) {
+            for (int i = 0; i < jugadores.length; i++) {
+                if (jugadores[i] == null) {
+                    jugadores[i] = new Jugador(nomJ, passW);
                     return true;
                 }
-            }    
+            }
             return false;
         }
         return false;
     }
     
-    
-    
-    
-    
-    
-    
+    public boolean iniciarSesion(String nomJ, String passW){
+        Jugador j = buscarJugador(nomJ);
+        if (j != null) {
+            if(j.verificarPassWord(passW)){
+                jugadorActual = j;
+                return true;
+            }
+        }
+       return false;
+    }
+
     
 }
